@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+  <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+  <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
+  <!-- Add jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- queries -->
+  <script src="queries.js"></script>
+  
+
+  <style>
+      input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+    position: absolute;
+    right: 10px;
+    top: 30vh;
+    z-index: 1;
+}
+
+#year {
+  z-index: 1;
+  position: absolute;
+  top: -5vh;
+  left: 10px;
+  font-size: 10vh;
+  color: blue;
+}
+a-frame {
+  z-index: -1;
+}
+  </style>
+
+  
+    <body style='margin : 0px; overflow: hidden;'>
+        <h3 id="year">Testing</h3>
+        <input id="yearRange" type="range" orient="vertical" min="2008" max="2017" oninput="showValue(this.value)"/>
+      <a-scene>
+      	<a-assets>
+      <img id="sweden" src="Sweden_Map.png">
+    </a-assets>
+        <a-marker preset="hiro">
+        <a-plane class="mainPlane" src="#sweden" position="0 0.5 0" height="5" width="5" rotation="-90 0 0"></a-plane>
+        <!-- <a-box class="center-point" position="0 1 0" width="0.1" height="0.001" depth="0.1" color="red"></a-box> -->
+        <a-box id="sthlm-data" position="0.5 0.5 0.92" width="0.1" height="0.2" depth="0.1" color="lightblue"></a-box>
+        <a-box id="gbg-data" position="-0.85 0.5 1.55" width="0.1" height="0.2" depth="0.1" color="orange"></a-box>
+        <a-box id="malmo-data" position="-0.65 0.5 2.3" width="0.1" height="0.2" depth="0.1" color="purple"></a-box>
+        <!-- title-text -->
+        <a-text id="sthlm-text" position="0.4 0.55 1" value="Stockholm" width="2" color="black" rotation="-45 0 0"></a-text>
+        <a-text id="gbg-text" position="-1 0.55 1.7" value="Goteborg" width="2" color="black"></a-text>
+        <a-text id="malmo-text" position="-0.75 0.55 2.4" value="Malmo" width="2" color="black"></a-text>
+        <!-- Data-text -->
+        <a-text id="sthlm-text-data" position="0.65 0.55 0.92" value="" width="2" color="lightblue" font="exo2bold"></a-text>
+        <a-text id="gbg-text-data" position="-1 0.55 1.55" value="" width="2" color="orange" font="exo2bold" ></a-text>
+        <a-text id="malmo-text-data" position="-0.75 0.55 2" value="" width="2" color="purple" font="exo2bold" ></a-text>
+      </a-marker>
+
+        
+        <a-entity id="camera" camera></a-entity color="red">
+          
+      </a-scene>
+    </body>
+ 
+  <script>
+    $("document").ready(function() {
+
+      let titleHeight = 0.6
+      let dataHeight = 0.7
+      let yearData = {
+        min: 2007,
+        max: 2017,
+        sthlm: [1949516, 1981263, 2019182, 2054343, 2091473, 2127006, 2163042, 2198044, 2231439, 2269060, 2308143],
+        gbg: [896157, 906691, 917984, 928629, 938580, 947575, 958024, 970912, 982360, 997446, 1012569],
+        malmo: [624236, 635224, 647292, 656355, 662941, 670394, 678460, 687481, 695430, 707120, 719185]
+      }
+
+      $(".mainPlane").attr("rotation", "-90 0 0");
+      let sthlmData, gbgData;
+      let sthlmPos = { x: 0.5, y: 1, z: 0.7 };
+      let gbgPos = { x: -0.9, y: 0.5, z: 1.6 };
+      let malmoPos = { x: -0.7, y:  0.5, z: 2.3 };
+      let yearTitle = document.getElementById("#year");
+      let slider = document.getElementById("yearRange");
+      let sceneEl = document.querySelector("a-scene");
+
+      sceneEl.querySelector("#gbg-data").setAttribute("position", gbgPos.x+" "+gbgPos.y+" "+gbgPos.z);
+      sceneEl.querySelector("#gbg-text").setAttribute("position", (gbgPos.x-0.15)+" "+titleHeight+" "+(gbgPos.z+0.1));
+
+      sceneEl.querySelector("#malmo-data").setAttribute("position", malmoPos.x+" "+malmoPos.y+" "+malmoPos.z);
+      sceneEl.querySelector("#malmo-text").setAttribute("position", (malmoPos.x-0.15)+" "+titleHeight+" "+(malmoPos.z+0.1));
+
+
+      showValue = function(value) {
+        document.getElementById("year").innerHTML = value;
+        let i = value - 2007;
+        let scaleVal = 2000000;
+        let sthlmVal = yearData.sthlm[i]/scaleVal;
+        let gbgVal = yearData.gbg[i]/scaleVal;
+        let malmoVal = yearData.malmo[i]/scaleVal;
+        sceneEl.querySelector("#sthlm-data").setAttribute("height", sthlmVal);
+        sceneEl.querySelector("#gbg-data").setAttribute("height", gbgVal);
+        sceneEl.querySelector("#malmo-data").setAttribute("height", malmoVal);
+
+        let sthlmData = sceneEl.querySelector("#sthlm-text-data");
+        sthlmData.setAttribute("position", sthlmPos.x - 0.1+" "+(0.55+sthlmVal/2)+" "+sthlmPos.z)
+        sthlmData.setAttribute("value", yearData.sthlm[i])
+
+        let gbgData = sceneEl.querySelector("#gbg-text-data");
+        gbgData.setAttribute("position", gbgPos.x-.15 +" "+ (0.55+gbgVal/2) +" "+gbgPos.z)
+        gbgData.setAttribute("value", yearData.gbg[i])
+
+        let malmoData = sceneEl.querySelector("#malmo-text-data");
+        malmoData.setAttribute("position", malmoPos.x-0.15+" " + (0.55 + malmoVal/2) +" "+malmoPos.z)
+        malmoData.setAttribute("value", yearData.malmo[i])
+      }
+
+
+      $.post(ageUrl, ageQuery, function(returnData, status) {
+        //console.log(data_use);
+        let testSthlmData = returnData.data["0"].values;
+        let testGbgData = returnData.data["1"].values;
+        let sthlmPop = Number(testSthlmData[0]) + Number(testSthlmData[1]);
+        let gbgPop = Number(testGbgData[0]) + Number(testGbgData[1]);
+        let maxHeight = sthlmPop * 2;
+        let sthlmHeight = sthlmPop / maxHeight;
+        let gbgHeight = gbgPop / maxHeight;
+        sthlmData = sthlmHeight;
+        gbgData = gbgHeight;
+        console.log("Sthlm:" + sthlmData);
+        console.log("Gbg: " + gbgData);
+        const sthlmBox =
+        "<a-box color='blue' position='" +
+        sthlmPos +
+        "' width=0.1 depth=0.1 height=" +
+        sthlmData +
+        "></a-box>";
+      const gbgBox =
+        "<a-box color='blue' position='" +
+        gbgPos +
+        "' width=0.1 depth=0.1 height=" +
+        gbgData +
+        "></a-box>";
+      $("a-marker").append(sthlmBox);
+      $("a-marker").append(gbgBox);
+      });
+     
+    });
+  </script>
+</html>

@@ -1,0 +1,20 @@
+## Perhaps started this too late, but better late than never.
+Date  # START #  END  # Activity #
+-     : 14.14 : 14.35 : Read Visualization book.
+      : 14.42 : 15.00 : Read Visualization book.
+-     : 15.20 : 16.00 : Read visualization book.
+
+
+02/03 : 00:57 : 02:18 : Make country name clickable. Started working on displaying by years.  
+02/03 : 10.23 : 10:30 : Some minutes during lab time.
+02/03 : 14.15 : 15.00 : Working on displaying years indexed data. 2D
+02/03 : 15.30 : 17.00 : Year is now clickable. Next: Try with other data.
+02/03 : 17.35 : 18:45 : Loaded with 10 countries 10 years
+
+03/3  : 14.45 : 15.30 : Make the AR-representation use 10 countries 10 years.
+
+04/3  : 12.00 : 13.00 : Display 3D barchart in screen. Next: make it spin.
+04/3  : 17.00 : 17.30 : Made it spin.
+
+06/3  : 11.45 : 13.15 : Done some updates on min-max values, and general works on 3D graph.
+06/3  : 13.35 : 14.10 : Made creation of 3D graph into separate file. Should be able to use for AR as well now.

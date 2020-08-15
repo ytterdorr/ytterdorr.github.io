@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt - Djupviks Hamn</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/left-aside.js" defer></script>
+    <script src="/js/kontaktform.js" defer></script>
+  </head>
+  <body>
+    <!-- Fixed position meny stuff -->
+    <div class="close-menu-background hidden" onclick="toggleMenu()"></div>
+    <div class="menu-button" onclick="toggleMenu()">
+      <div>_</div>
+      <div>_</div>
+      <div>_</div>
+    </div>
+    <div class="container">
+      <header>
+        <h1>Djupviks Hamn</h1>
+      </header>
+      <div class="content-container">
+        <aside class="left-side"></aside>
+        <main>
+          <p class="comment">
+            Kommentar till dig som utvecklar sajten: Vi tänker oss även ett
+            formulär där användare kan skicka in frågor osv till oss.
+          </p>
+
+          <h2>Kontaktuppgifter</h2>
+          <p>
+            Hamnfogde Bo Lautin, mobil 0707-920310<br />
+            <br />
+            Djupviks hamnförening<br />
+            c/o Ekholm<br />
+            Eksta Hägur 170<br />
+            623 54 Klintehamn<br />
+          </p>
+          <!-- <h3>Kontaktformulär</h3> -->
+          <!-- <p class="comment">
+            Sånt vi vill få in svar på är:
+          </p>
+          <ul>
+            <li>Rubrik för ärendet.</li>
+            <li>Beskrivning utav ärendet.</li>
+            <li>Val om vad det gäller (Båtplats, Medlem eller Övrigt).</li>
+            <li>Hur man vill bli kontaktad (mail, telefon eller inte alls)</li>
+            <li>Telefon</li>
+            <li>Mail</li>
+          </ul>
+          <p class="comment">
+            Kanske att du kommer på något mer som är relevant?
+          </p> -->
+
+          <form id="contact-form">
+            <fieldset>
+              <legend>Kontaktformulär</legend>
+              <p>
+                <label for="rubrik-input">Ärenderubrik*</label>
+                <input type="text" name="rubrik" id="rubrik-input" required />
+              </p>
+
+              <p>
+                <label for="arende-typ"
+                  >Vad gäller ärendet?* <br />(Båtplats/Medlem/Övrigt)</label
+                >
+
+                <select id="arende-typ" name="arende-typ" required>
+                  <option value="">Välj...</option>
+                  <option value="batplats">Båtplats</option>
+                  <option value="medlem">Medlem</option>
+                  <option value="ovrigt">Övrigt</option>
+                </select>
+              </p>
+
+              <p>
+                <label for="beskrivning">Beskrivning av ärendet*</label>
+                <textarea
+                  type="text"
+                  name="beskrivning"
+                  id="beskrivning"
+                  required
+                >
+Text</textarea
+                >
+              </p>
+
+              <p>
+                <label for="contact-select"
+                  >Hur vill du att vi ska kontakta dig? <br />(Telefon/Epost/Ej
+                  kontakt)*</label
+                >
+                <select id="contact-select" name="contact-select" required>
+                  <option value="">Välj...</option>
+                  <option value="epost">Epost</option>
+                  <option value="telefon">Telefon</option>
+                  <option value="none">Vill inte bli kontaktad</option>
+                </select>
+              </p>
+
+              <p class="contact-method">
+                <!-- <label for="telefon-input">Telefonnummer</label>
+                <input type="tel" name="telefon" id="telefon-input" /> -->
+              </p>
+              <button type="submit" class="skicka-knapp">Skicka</button>
+            </fieldset>
+          </form>
+        </main>
+        <div class="side-widget">Widget</div>
+      </div>
+    </div>
+  </body>
+</html>

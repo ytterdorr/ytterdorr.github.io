@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medlem - Djupviks Hamn</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/left-aside.js" defer></script>
+    <script
+      content-type="text/javascript"
+      src="../js/medlemmar.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <!-- Fixed position meny stuff -->
+    <div class="close-menu-background hidden" onclick="toggleMenu()"></div>
+    <div class="menu-button" onclick="toggleMenu()">
+      <div>_</div>
+      <div>_</div>
+      <div>_</div>
+    </div>
+    <div class="container">
+      <header>
+        <h1>Djupviks Hamn</h1>
+      </header>
+      <div class="content-container">
+        <aside class="left-side"></aside>
+        <main>
+          <h2>Medlemsinformation</h2>
+
+          <h3>Aktuellt/På Gång</h3>
+          <p>
+            Uppehåll just nu p.g.a. rådande omständigheter, men snart drar vi
+            igång igen!
+          </p>
+
+          <h3>Medlemslista</h3>
+
+          <table class="medlemslista"></table>
+
+          <div class="password-protected">
+            <p>
+              Den här informationen innehåller personuppgifter och är
+              lösenordsskyddad.
+            </p>
+            <form id="password-form">
+              <label for="member-password"></label>
+              <input
+                id="member-password"
+                name="member-password"
+                type="password"
+              /><br />
+              <div id="error-field"></div>
+              <button type="button" id="password-check-btn">Bekräfta</button>
+            </form>
+          </div>
+        </main>
+        <div class="side-widget">Widget</div>
+      </div>
+    </div>
+  </body>
+</html>

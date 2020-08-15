@@ -1,0 +1,538 @@
+/*
+Några färger tagna med pipettverktyg från bilderna
+Brun-orange (Från husväggar): ​ 7b3a10
+, ​ da8f29
+.
+Blått (Tak och hav): ​ 323755
+, ​ 6e8aa0
+, ​ 55708e
+Gråvitt (Båtar och stenar): ​ f7e5d1
+, ​ fffefa
+Grönt (Träd och gräs):​ 406700
+, b3b106
+, ​ 8c9401
+.
+,
+*/
+@font-face {
+  font-family: "Rowdies Regular";
+  src: url("/fonts/Rowdies/Rowdies-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Rowdies Bold";
+  src: url("/fonts/Rowdies/Rowdies-Bold.ttf");
+}
+
+@font-face {
+  font-family: Caveat;
+  src: url("/fonts/Caveat/Caveat-Bold.ttf");
+}
+
+.comment {
+  color: red;
+  /* display: none; */
+}
+
+:root {
+  --blue3: #323755;
+  --blue2: #6e8aa0;
+  --blue1: #55708e;
+  --blue4: #a1bedf;
+  --brown1: #7b3a10;
+  --brown2: #eead51;
+  --white1: #f7e5d1;
+  --white2: #fffefa;
+  --green1: #406700;
+  --green2: #b3b106;
+  --green3: #8c9401;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--white1);
+  font-size: ;
+}
+
+h2,
+h3,
+h4 {
+  max-width: 90vw;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  /* font-weight: bold; */
+  /* font-family: Caveat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif */
+  font-family: "Rowdies Bold", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3,
+h4 {
+  /* font-family: Caveat; */
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  font-family: "Rowdies Bold", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0.5rem;
+  line-height: 1.3rem;
+  font-size: 1.1rem;
+  /* margin-bottom: ; */
+}
+
+td {
+  min-width: 100px;
+}
+
+/* for the weather app*/
+td > p {
+  display: inline-block;
+}
+
+svg {
+  display: inline;
+  transform-origin: center;
+}
+
+picture {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+dt {
+  font-weight: 600;
+  margin-top: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+dd {
+  display: block;
+  margin-inline-start: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px;
+}
+
+form fieldset {
+  border: 2px solid var(--brown1);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+form textarea {
+  height: 5rem;
+}
+
+label {
+  /* margin-top: 0.5rem; */
+  vertical-align: top;
+  display: block;
+}
+
+.container {
+  /* position: relative; */
+  max-width: 900px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  background-color: var(--blue2);
+  height:6rem;
+  /*Sjöbodar och lite vatten*/
+  background-image: url(/bilder/livboj-1000x662.jpg);
+  background-position: 50% 58%;
+
+  /* klippa
+  background-image: url(/bilder/D-13.jpg);
+  background-position: 50% 80%;   */
+  /* Livboj */
+  background-image: url(/bilder/D-15.jpg);
+  background-position: 50% 43%;
+
+  background-size: cover;
+  /* text-align-last: center;  */
+}
+
+header h1 {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--white1);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.left-side {
+  width: 20%;
+  min-height: 200px;
+  height: fit-content;
+  max-width: 150px;
+  background-color: var(--brown1);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+}
+
+.left-side .menu-button {
+  transition-duration: 2.5s;
+}
+
+footer {
+  bottom: 0;
+}
+
+footer p {
+  font-size: 0.8rem;
+  font-family: sans-serif;
+  color: var(--white1);
+}
+
+nav {
+  width: 100%;
+  height: fit-content;
+}
+nav ul {
+  height: fit-content;
+  text-decoration: none;
+  /* border-radius: 0.3rem; */
+}
+
+nav ul li {
+  background-color: var(--brown1);
+  border-bottom: 1px solid #fffefa;
+  color: var(--white1);
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  list-style-type: none;
+  /* font-weight: bold; */
+  font-family: "Rowdies Regular";
+  /* border-radius: 0.3rem; */
+}
+
+nav ul li:hover {
+  background-color: var(--blue2);
+}
+
+main {
+  width: 60%;
+  flex-grow: 1;
+  background-color: var(--white2);
+  border: 2px solid var(--brown1);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 10vh;
+}
+
+.side-widget {
+  width: 20%;
+  border: 2px solid white;
+  background-color: var(--blue2);
+  border-radius: 2rem;
+  max-height: 300px;
+  /* display: none; */
+}
+
+.side-widget {
+  display: none;
+}
+
+.widget {
+  width: 400px;
+  background-color: var(--white1);
+  border: 2px solid var(--brown1);
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 4px 1px var(--blue1);
+  padding: 1rem;
+}
+
+.widget h3 {
+  color: black;
+}
+
+.widget table {
+}
+
+.widget > table > :nth-child(even) {
+  background-color: var(--blue1);
+}
+
+.widget > table > :nth-child(3) {
+  background-color: var(--blue2);
+}
+
+.widget tbody {
+  border: 3px solid white;
+}
+
+.widget td {
+  text-align: center;
+  border-bottom: 2px solid white;
+  color: var(--white2);
+  font-family: sans-serif;
+}
+
+.widget th {
+  font-family: Caveat;
+  font-size: 1.3rem;
+  color: var(--blue1);
+  border-bottom: 2px solid white;
+}
+
+.widget h2 {
+  color: var(--blue1);
+  margin: auto;
+  font-family: Caveat, sans-serif;
+  font-size: 2.5rem;
+}
+
+figure {
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+figure figcaption {
+  margin: 1rem;
+  font-style: italic;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+/* Formuläret */
+#contact-form {
+  width: 100%;
+}
+.skicka-knapp {
+  width: 100%;
+  background-color: var(--blue1);
+  color: var(--white1);
+  font-size: 1.5rem;
+  padding: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.skicka-knapp:hover {
+  background-color: var(--blue2);
+}
+form p {
+  box-sizing: border-box;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: 1px solid var(--blue3);
+}
+
+form legend {
+  font-size: 2rem;
+  font-weight: bold;
+  /* display: none; */
+}
+
+select {
+  width: 100%;
+  height: 1.5rem;
+  background-color: var(--white2);
+  margin-top: 0.3rem;
+}
+
+.medlemslista {
+  /* display: none; */
+
+}
+
+.medlemslista tr {
+  border-bottom: 1px solid black;
+}
+.medlemslista td {
+  padding: 0.3rem;
+  /* border: 1px solid black */
+  text-align: left;
+}
+
+.medlemslista th {
+  padding-left: 0.3rem;
+  text-align: left;
+  font-weight: bold;
+  /* font-family: Caveat; */
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .side-widget {
+    display: block;
+  }
+
+  .container {
+    max-width: 1000px;
+  }
+}
+
+.menu-button {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 10rem;
+  left: -0.5rem;
+  width: 2rem;
+  height: 6rem;
+  background-color: var(--brown1);
+  z-index: 1;
+  border-radius: 0 3rem 3rem 0;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  /* border-left: none; */
+  display: none;
+}
+
+.menu-button>div { 
+  background-color: white;
+  height: 0.2rem;
+  width: 1.5rem;
+  margin: 0.2rem;
+  border-radius; 0.1rem;
+  color: var(--brown1);
+
+}
+
+.close-menu-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--white1);
+  background-color: white;
+  opacity: 0.5;
+  z-index: 1;
+}
+  
+/* Mobile screen Portrait mode */
+@media screen and (max-width: 600px) {
+
+  header {
+    background-image: src("../bilder/livboj-600x400.jpg")
+  }
+  
+  .left-side {
+    position: fixed;
+    left: -80vw;
+    top: 2vh;
+    width: 80vw;
+    height: 80vh;
+    max-width: none;
+    max-height: 80vh;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    border-left: none;
+    z-index: 2
+
+  }
+
+  .left-side.show-menu {
+    left: 0;
+  }
+
+  .left-side nav {
+    width: 100%;
+  }
+
+  .left-side li {
+    padding: 1rem;
+  }
+
+  .menu-button {
+    left: 0vw;
+    display: flex;
+  }
+
+  .menu-button.show-menu {
+    left: 80vw;
+  }
+
+  footer {
+    font-size: 2rem;
+  }
+
+  header {
+    height: 10rem;
+  }
+
+  main {
+    /* margin-left: 1rem; */
+    padding-left: 3rem;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    3rem;
+  }
+
+  .widget {
+    min-width: 0;
+    width: fit-content;
+  }
+
+  .widget td, .widget th {
+    width: fit-content;
+    padding: 3px;
+    font-size: 1rem;
+    min-width: 20px;
+  }
+  
+}

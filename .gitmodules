@@ -1,3 +1,9 @@
 [submodule "Eurything"]
 	path = Eurything
 	url = https://github.com/ytterdorr/EurydikeRPG
+[submodule "ARDataVis"]
+	path = ARDataVis
+	url = https://github.com/ytterdorr/ARDataVis
+[submodule "DynWeb_Proj"]
+	path = DynWeb_Proj
+	url = https://github.com/ytterdorr/DynWeb_Proj
